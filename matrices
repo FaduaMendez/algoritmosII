@@ -5,7 +5,16 @@ using namespace std;
 
 void main()
 {int matriz1[N][N],matriz2[N][N],matriz3[N][N],matriz4[N][N],matriz5[N][N],matriz6[N][N];
-int i,j,n1,m1,n2,m2,n3,m3,n4,m4,n5,m5,n6,m6,l,k;
+int i,j,n1,m1,n2,m2,n3,m3,n4,m4,n5,m5,n6,m6,l,k,o;
+cout<<"1.SUMA"<<endl;
+cout<<"2.RESTA"<<endl;
+cout<<"3.MULTIPLICACION"<<endl;
+cout<<"4.TRANSPUESTA"<<endl;
+cout<<"5.ORDENAR"<<endl;
+cout<<"6.DETERMINANTE"<<endl;
+cout<<"ESCOJA UNA OPCION:";
+cin>>o;
+if(o==1)
 cout<<"Ingrese el numero de las filas de la matriz1:";
 cin>>n1;
 cout<<"Ingrese el numero de las columnas de la matriz1:";
@@ -132,4 +141,3 @@ for(i=0;i<n6;i++)
 	}
 getch();
 }
-
