@@ -1,0 +1,135 @@
+#include <conio.h>
+#include <iostream>
+#define N 10
+using namespace std;
+
+void main()
+{int matriz1[N][N],matriz2[N][N],matriz3[N][N],matriz4[N][N],matriz5[N][N],matriz6[N][N];
+int i,j,n1,m1,n2,m2,n3,m3,n4,m4,n5,m5,n6,m6,l,k;
+cout<<"Ingrese el numero de las filas de la matriz1:";
+cin>>n1;
+cout<<"Ingrese el numero de las columnas de la matriz1:";
+cin>>m1;
+	for(i=0;i<n1;i++)
+		{for(j=0;j<m1;j++)
+			{cout<<"matriz1 ["<<i<<"]["<<j<<"]:";
+			 cin>>matriz1[i][j];
+			}
+	}
+cout<<"LA MATRIZ UNO ES:"<<endl;
+	for(i=0;i<n1;i++)
+		{for(j=0;j<m1;j++)
+			{cout<<matriz1[i][j]<<" ";
+			}
+			cout<<endl;
+	}
+do{
+		cout<<"Ingrese el numero de las filas de la matriz2:";
+		cin>>n2;
+}while(n2!=n1);
+do{
+	cout<<"Ingrese el numero de las columnas de la matriz2:";
+	cin>>m2;
+}while(m2!=m1);
+
+for(i=0;i<n2;i++)
+	{for(j=0;j<m2;j++)
+		{cout<<"matriz2["<<i<<"]["<<j<<"]:";
+		 cin>>matriz2[i][j];
+		}
+}
+cout<<"LA MATRIZ DOS ES:"<<endl;
+for(i=0;i<n1;i++)
+	{for(j=0;j<m1;j++)
+		{cout<<matriz2[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+n3=n1;
+m3=m1;
+
+for(i=0;i<n3;i++)
+	{for(j=0;j<m3;j++)
+		{matriz3[i][j]=matriz2[i][j]+matriz1[i][j];
+		}
+	}
+cout<<"EL RESULTADO DE LA SUMA ES:";
+cout<<endl;
+for(i=0;i<n3;i++)
+	{for(j=0;j<m3;j++)
+		{cout<<matriz3[i][j]<<" ";
+		}
+	cout<<endl;
+}
+for(i=0;i<n3;i++)
+	{for(j=0;j<m3;j++)
+		{matriz3[i][j]=matriz2[i][j]-matriz1[i][j];
+		}
+	}
+cout<<"EL RESULTADO DE LA RESTA ES:";
+cout<<endl;
+for(i=0;i<n3;i++)
+	{for(j=0;j<m3;j++)
+		{cout<<matriz3[i][j]<<" ";
+		}
+	cout<<endl;
+}
+cout<<"*******MULTIPLICACION********";
+cout<<"Ingrese las filas de la matriz1:";
+cin>>n4;
+cout<<"Ingrese las columnas de la matriz1:";
+cin>>m4;
+for(i=0;i<n4;i++)
+	{for(j=0;j<m4;j++)
+		{cout<<"matriz1["<<i<<"]["<<j<<"]:";
+		 cin>>matriz4[i][j];
+		}
+}
+cout<<"LA MATRIZ UNO ES:"<<endl;
+for(i=0;i<n4;i++)
+	{for(j=0;j<m4;j++)
+		{cout<<matriz4[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+do{
+cout<<"Ingrese las filas de la matriz2:";
+cin>>n5;
+}while(n5!=m4);
+cout<<"Ingrese las columnas de la matriz1:";
+cin>>m5;
+for(i=0;i<n5;i++)
+	{for(j=0;j<m5;j++)
+		{cout<<"matriz2["<<i<<"]["<<j<<"]:";
+		 cin>>matriz5[i][j];
+		}
+}
+cout<<"LA MATRIZ DOS ES:"<<endl;
+for(i=0;i<n5;i++)
+	{for(j=0;j<m5;j++)
+		{cout<<matriz5[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+for(l=0;l<n4;l++)
+{for(i=0;i<m5;i++)
+	{for(j=0;j<m4;j++)
+		{k=k+matriz4[j][i]*matriz5[i][j];
+		}
+  matriz6[l][i]=k;
+ k=0;    
+}
+
+}
+n6=m4;
+m6=n5;
+cout<<"EL RESULTADO ES:"<<endl;
+for(i=0;i<n6;i++)
+	{for(j=0;j<m6;j++)
+		{cout<<matriz6[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+getch();
+}
+
