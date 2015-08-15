@@ -1,0 +1,46 @@
+
+#include <iostream>
+#include <conio.h>
+
+#define N 10
+using namespace std;
+
+void main()
+{float matriz[N][N],det;
+int n,m,j,k,l,h,i;
+cout<<"Ingrese el tamaño de la matriz:"<<endl;
+cin>>n;
+cout<<"CARGAR\n";
+for(i=0;i<n;i++)
+{for(j=0;j<n;j++)
+{cout<<"Ingrese ["<<i<<"]["<<j<<"]:";
+ cin>>matriz[i][j];
+ }
+}
+cout<<"LA MATRIZ ES:\n";
+for(i=0;i<n;i++)
+{for(j=0;j<n;j++)
+{cout<<matriz[i][j]<<"  ";
+ }
+cout<<endl;
+}
+if(n==2)
+{det=(matriz[0][0]*matriz[1][1])-(matriz[1][0]*matriz[0][1]);
+cout<<"El determinante es:"<<det<<endl;
+}
+if(n==3)
+{det=matriz[0][0];
+m=n-1;
+for(k=0;k<m;k++) 
+{ l=k+1; 
+for(i=l;i<n;i++) 
+{ for(j=l;j<n;j++) 
+matriz[i][j] = (matriz[k][k]*matriz[i][j]-matriz[k][j]*matriz[i][k] )/matriz[k][k]; 
+} 
+det=det*matriz[k+1][k+1]; 
+} 
+cout << endl; 
+cout << "DETERMINANTE = " << det << endl; 
+}
+getch(); 
+}
