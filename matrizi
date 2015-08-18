@@ -1,0 +1,147 @@
+
+#include<conio.h>
+#include<iostream>
+using namespace std;
+//i,j,s son punteros
+//k es tamanho de las atrices
+int i,j, k, s,p,e,m,n,c;
+float m1[1000][1000], coef, aux[1000], elemento,m2[1000][1000],m3[1000][1000],A[1000][1000],D[1000][1000];
+
+
+
+int main()
+{
+	cout<<"\n\t\t  CALCULADOR DE SEL  \n";
+	cout<<"         --------------------------------------------"<<endl;
+	cout<<endl;
+	cout<<"\t Introduzca el tamanho de la matriz A(n*n) y B(n*1)\n";
+	cout<<" n = ";
+	cin >> k;
+	cout<<" \n Digite la Matriz de Coeficientes A:   \n\n";
+for (i=0;i<k;i++)
+		{
+			for (j=0;j<k;j++)
+			{
+				cout <<"Digite ["<<i<<"]["<<j<<"]: ";
+				cin >> m1 [i][j];
+			}
+		}
+	for (i=0;i<k;i++)
+		{for(j=0;j<k;j++)
+			{A[i][j]=m1[i][j];
+            }
+         }
+	cout<<endl;
+	cout<<" Matriz A=  \n"<<endl;
+for (i=0;i<k;i++)
+		{
+			for(j=0;j<k;j++)
+			{cout <<"\t"<<A[i][j];
+			 }
+			cout<<endl;
+		}
+cout<<endl;
+cout<<"Inversa de A= \n "<<endl;
+
+	
+	for (i=0;i<k;i++)
+		for(j=k;j<2*k;j++)
+		{
+			if(i==(j-k))
+				m1[i][j]=1;
+			else
+				m1[i][j]=0;
+		}
+		//Iteraciones
+		for (s=0;s<k;s++)
+		{
+			elemento=m1[s][s];
+			for (j=0;j<2*k;j++)
+				m1[s][j]=m1[s][j]/elemento;
+
+			for(i=0;i<k;i++)
+			{
+				if (i==s)
+					;
+				else
+				{
+					coef= m1[i][s];
+					for (j=0;j<2*k;j++)
+						aux[j]=m1[s][j]*(coef*-1);
+					for (j=0;j<2*k;j++)
+						m1[i][j]=m1[i][j]+aux[j];
+				}
+			}
+		}
+	
+		//Imprimir la matriz inversa
+		
+		for (i=0;i<k;i++)
+		{
+			for(j=k;j<2*k;j++)
+			{cout <<"\t"<<m1[i][j];
+			 }
+			cout<<endl;
+		}
+		cout<<endl;
+		cout<<"Prueba: \n";
+		cout<<"Matriz A x Inversa de A debe dar la matriz identidad I : "<<endl;
+for (i=0;i<k;i++)
+		{
+			for(j=0;j<k;j++)
+			{cout <<"\t"<<m1[i][j];
+			 }
+			cout<<endl;
+		}
+		for (i=0;i<k;i++)
+		{c=0;
+			for(j=k;j<2*k;j++)
+			{D[i][c]=m1[i][j];
+				c++;
+            }
+         }
+		
+		
+cout<<" \nComo AX=B para hallar la matriz X \n"<<endl;
+cout<<"Se multiplicando la inversa de A por la matriz B \n"<<endl;
+cout<<"     -------------------------- \n"<<endl;
+cout<<"Introduzca la matriz B para la multiplicacion \n"<<endl;
+cout<<endl;
+for (e=0;e<k;e++)
+		{
+			for (p=0;p<1;p++)
+			{
+			  cout <<"Digite ["<<e<<"]["<<p<<"]: ";
+				cin >> m2 [e][p];
+			}
+		}
+cout<<"Matriz B=  \n"<<endl;
+for (e=0;e<k;e++)
+		{
+			for(p=0;p<1;p++)
+			{cout <<"\t"<<m2[e][p];
+			 }
+			cout<<endl;
+		}
+
+
+for(i=0;i<k;i++)
+   {for(j=0;j<k;j++)
+       { m3[i][j]=0;
+for(p=0;p<k;p++)
+		    {m3[i][j]=(m3[i][j]+(D[i][p]*m2[p][j]));
+		}
+      }
+    }
+
+cout<<"Finalmente Matriz X=  \n"<< endl;
+for (i=0;i<k;i++)
+		{
+			for(j=0;j<1;j++)
+			{cout <<"\t"<<m3[i][j];
+			 }
+			cout<<endl;
+} 
+	
+	getch ();	
+}
