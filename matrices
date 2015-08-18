@@ -6,8 +6,8 @@
 using namespace std;
 
 void main()
-{int matriz1[N][N],matriz2[N][N],matriz3[N][N],matriz4[N][N],matriz5[N][N],matriz6[N][N];
-int i,j,n1,m1,n2,m2,n3,m3,n4,m4,n5,m5,n6,m6,l,k=0,o,z;
+{int matriz1[N][N],matriz2[N][N],matriz3[N][N],matriz4[N][N],matriz5[N][N],matriz6[N][N],v[N];
+int i,j,n1,m1,n2,m2,n3,m3,n4,m4,n5,m5,n6,m6,l,k=0,o,z,aux;
 
 cout<<"1.SUMA"<<endl;
 cout<<"2.RESTA"<<endl;
@@ -183,5 +183,116 @@ if(o==3)
 				cout<<endl;
 				}
 				}
+if(o==4)
+				{cout<<"Ingrese las filas de la matriz:";
+                 cin>>n4;
+				 cout<<"Ingrese las columnas de la matriz:";
+				 cin>>m4;
+				 for(i=0;i<n4;i++)
+				{for(j=0;j<m4;j++)
+				{cout<<"matriz1["<<i<<"]["<<j<<"]:";
+				cin>>matriz4[i][j];
+				}
+				}
+				 cout<<"LA MATRIZ ES:"<<endl;
+				for(i=0;i<n4;i++)
+				{for(j=0;j<m4;j++)
+				{cout<<matriz4[i][j]<<" ";
+				}
+				cout<<endl;
+				}
+				 if(n4==m4){
+				 for(i=0;i<n4-1;i++)
+				 {for(j=i+1;j<m4;j++)
+				 {aux=matriz4[i][j];
+				  matriz4[i][j]=matriz4[j][i];
+				  matriz4[j][i]=aux;
+				 }
+				 }
+				 }
+				 if(n4!=m4)
+				 {
+					for(i=0;i<m4;i++)
+					{for(j=i+1;j<n4;j++)
+					{aux=matriz4[i][j];
+					matriz4[i][j]=matriz4[j][i];
+					matriz4[j][i]=aux;
+					}
+					}
+					if(n4>m4)
+					{k=n4-m4;
+					l=m4;
+					m4=m4+k;
+					for(i=m4;i<n4;i++)
+					{for(j=l+1;j<m4;j++)
+					{
+					aux=matriz4[i][j];
+					matriz4[i][j]=matriz4[j][i];
+					matriz4[j][i]=aux;
+					}
+					}
+					n4=n4-k;
+					}
+					else
+					{k=m4-n4;
+					l=n4;
+					n4=n4+k;
+					for(j=l;j<n4;j++)
+					{for(i=0;i<m4;i++)
+					{
+					aux=matriz4[i][j];
+					matriz4[i][j]=matriz4[j][i];
+					matriz4[j][i]=aux;
+					}
+					}
+					m4=m4-k;
+					}
+					}
+				  cout<<"LA MATRIZ TRANSPUESTA ES:"<<endl;
+				for(i=0;i<n4;i++)
+				{for(j=0;j<m4;j++)
+				{cout<<matriz4[i][j]<<" ";
+				}
+				cout<<endl;
+				}
+				}
+if(o==5)
+{               cout<<"Ingrese las filas de la matriz1:";
+				cin>>n4;
+				cout<<"Ingrese las columnas de la matriz1:";
+				cin>>m4;
+				for(i=0;i<n4;i++)
+				{for(j=0;j<m4;j++)
+				{cout<<"matriz1["<<i<<"]["<<j<<"]:";
+				cin>>matriz4[i][j];
+				}
+				}
+				cout<<"LA MATRIZ UNO ES:"<<endl;
+				for(i=0;i<n4;i++)
+				{for(j=0;j<m4;j++)
+				{cout<<matriz4[i][j]<<" ";
+				}
+				cout<<endl;
+				}
+				 for(i=0;i<n1;i++)
+				{for(j=0;j<m1;j++)
+				{for(k=0;k<n1;k++)
+				{for(l=0;l<m1;l++)
+				{if(matriz1[i][j]<matriz1[k][l])
+				{swap(matriz1[i][j],matriz1[k][l]);
+				}
+				}
+				}
+				}
+				}
+				cout<<"LA MATRIZ ORDENADA ES:"<<endl;
+				for(i=0;i<n1;i++)
+				{for(j=0;j<m1;j++)
+				{cout<<matriz1[i][j]<<" ";
+				}
+				cout<<endl;
+				}
+
+}
 				getch();
 }
