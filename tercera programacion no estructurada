@@ -1,0 +1,375 @@
+#include <conio.h>
+#include <iostream>
+#include "stdlib.h"
+#define N 10
+
+using namespace std;
+void main()
+{float matriz1[N][N],matriz2[N][N],matriz3[N][N],matriz4[N][N],a[N],D[N][N];
+int i,j,n1,m1,n2,m2,n3,m3,l,k,o,z,aux,e,coef,c,p,s;
+cout<<"Ingrese el numero de las filas de la matriz1:";
+cin>>n1;
+cout<<"Ingrese el numero de las columnas de la matriz1:";
+cin>>m1;
+for(i=0;i<n1;i++)
+{for(j=0;j<m1;j++)
+{cout<<"matriz1 ["<<i<<"]["<<j<<"]:";
+cin>>matriz1[i][j];
+}
+}
+
+cout<<"Ingrese el numero de las filas de la matriz2:";
+cin>>n2;
+cout<<"Ingrese el numero de las columnas de la matriz2:";
+cin>>m2;
+for(i=0;i<n2;i++)
+{for(j=0;j<m2;j++)
+{cout<<"matriz2["<<i<<"]["<<j<<"]:";
+cin>>matriz2[i][j];
+}
+}
+
+
+do{
+cout<<"LA MATRIZ UNO ES:"<<endl;
+for(i=0;i<n1;i++)
+{for(j=0;j<m1;j++)
+{cout<<matriz1[i][j]<<" ";
+}
+cout<<endl;
+}
+cout<<endl;
+cout<<endl;
+cout<<"LA MATRIZ DOS ES:"<<endl;
+for(i=0;i<n2;i++)
+{for(j=0;j<m2;j++)
+{cout<<matriz2[i][j]<<" ";
+}
+cout<<endl;
+}
+cout<<"1.SUMA"<<endl;
+cout<<"2.RESTA"<<endl;
+cout<<"3.MULTIPLICACION"<<endl;
+cout<<"4.TRANSPUESTA"<<endl;
+cout<<"5.ORDENAR POR FILA"<<endl;
+cout<<"6.ORDENAR POR COLUMNA"<<endl;
+cout<<"7.DIVIDIR"<<endl;
+cout<<"0.SALIR"<<endl;
+cout<<"ESCOJA UNA OPCION:";
+cin>>o;
+switch(o)
+{case 1:				
+						if((n1!=n2)||(m1!=m2))
+						{cout<<"NO SE PUEDE SUMAR";
+						}
+						else{
+							n3=n1; 
+						m3=m1;
+						for(i=0;i<n3;i++)
+						{for(j=0;j<m3;j++)
+						{matriz3[i][j]=matriz2[i][j]+matriz1[i][j];
+						}
+						}
+						cout<<"EL RESULTADO DE LA SUMA ES:";
+						cout<<endl;
+						for(i=0;i<n3;i++)
+						{for(j=0;j<m3;j++)
+						{cout<<matriz3[i][j]<<" ";
+						}
+						cout<<endl;
+						}
+						}
+						getch();
+						break;
+						
+
+case 2:                 
+						if((n1!=n2)||(m1!=m2))
+						{cout<<"NO SE PUEDE RESTAR";
+						}
+						else
+						{n3=n1;
+						m3=m1;
+						for(i=0;i<n3;i++)
+						{for(j=0;j<m3;j++)
+						{matriz3[i][j]=matriz2[i][j]-matriz1[i][j];
+						}
+					}
+					cout<<"EL RESULTADO DE LA RESTA ES:";
+					cout<<endl;
+					for(i=0;i<n3;i++)
+					{for(j=0;j<m3;j++)
+					{cout<<matriz3[i][j]<<" ";
+					}
+					cout<<endl;
+					}}
+					getch();
+					break;
+					
+case 3:		    k=0;
+	            if(m1!=n2)
+                cout<<"No se puede multiplicar";
+				else
+				{for(i=0; i<n1; i++)
+				{ for(j=0; j<m2; j++)
+				{for(z=0; z<m1; z++)
+				{k=k+ matriz1[i][z] * matriz2[z][j];
+				}
+				matriz3[i][j]=k;
+				k=0;
+				}
+				}
+				cout<<"EL RESULTADO ES:"<<endl;
+				for(i=0;i<n1;i++)
+				{for(j=0;j<m2;j++)
+				{cout<<matriz3[i][j]<<" ";
+				}
+				cout<<endl;
+				}
+				}
+				getch();
+				break;
+
+case 4:         do{cout<<"Que matriz quiere trasponer?";
+	            cin>>l;
+				}while(l<1||l>2);
+	            if(l==1){
+				for(i=0;i<n1;i++)
+				{for(j=0;j<m1;j++)
+				{matriz3[i][j]=matriz1[i][j];
+				}
+				}
+				n3=n1;
+				m3=m1;
+				}
+				else
+				{for(i=0;i<n2;i++)
+				{for(j=0;j<m2;j++)
+				{matriz3[i][j]=matriz2[i][j];
+				}
+				}
+				n3=n2;
+				m3=m2;
+				}
+				if(n3==m3){
+				 for(i=0;i<n3-1;i++)
+				 {for(j=i+1;j<m3;j++)
+				 {aux=matriz3[i][j];
+				  matriz3[i][j]=matriz3[j][i];
+				  matriz3[j][i]=aux;
+				 }
+				 }
+				 }
+				else{
+				 if(n3!=m3)
+				 {
+					for(i=0;i<m3;i++)
+					{for(j=i+1;j<n3;j++)
+					{aux=matriz3[i][j];
+					matriz3[i][j]=matriz3[j][i];
+					matriz3[j][i]=aux;
+					}
+					}
+					if(n3>m3)
+					{k=n3-m3;
+					l=m3;
+					m3=m3+k;
+					for(i=m3;i<n3;i++)
+					{for(j=l+1;j<m3;j++)
+					{
+					aux=matriz3[i][j];
+					matriz3[i][j]=matriz3[j][i];
+					matriz3[j][i]=aux;
+					}
+					}
+					n3=n3-k;
+					}
+					else
+					{k=m3-n3;
+					l=n3;
+					n3=n3+k;
+					for(j=l;j<n3;j++)
+					{for(i=0;i<m3;i++)
+					{
+					aux=matriz3[i][j];
+					matriz3[i][j]=matriz3[j][i];
+					matriz3[j][i]=aux;
+					}
+					}
+					m3=m3-k;
+					}
+					}
+				  cout<<"LA MATRIZ TRANSPUESTA ES:"<<endl;
+				for(i=0;i<n3;i++)
+				{for(j=0;j<m3;j++)
+				{cout<<matriz3[i][j]<<" ";
+				}
+				cout<<endl;
+				}
+				}
+				getch();
+				break;
+
+case 5:         do{cout<<"Que matriz quiere ordenar?";
+	            cin>>l;
+				}while(l<1||l>2);
+	            if(l==1){
+				for(i=0;i<n1;i++)
+				{for(j=0;j<m1;j++)
+				{matriz3[i][j]=matriz1[i][j];
+				}
+				}
+				n3=n1;
+				m3=m1;
+				}
+				else
+				{for(i=0;i<n2;i++)
+				{for(j=0;j<m2;j++)
+				{matriz3[i][j]=matriz2[i][j];
+				}
+				}
+				n3=n2;
+				m3=m2;
+				}
+	
+				for(i=0;i<n3;i++)
+				{for(j=0;j<m3;j++)
+				{for(k=0;k<n3;k++)
+				{for(l=0;l<m3;l++)
+				{if(matriz3[i][j]<matriz3[k][l])
+				{swap(matriz3[i][j],matriz3[k][l]);
+				}
+				}
+				}
+				}
+				}
+				cout<<"LA MATRIZ ORDENADA ES:"<<endl;
+				for(i=0;i<n3;i++)
+				{for(j=0;j<m3;j++)
+				{cout<<matriz3[i][j]<<" ";
+				}
+				cout<<endl;
+				}
+				getch();
+				break;
+
+case 6:         do{cout<<"Que matriz quiere ordenar?";
+	            cin>>l;
+				}while(l<1||l>2);
+	            if(l==1){
+				for(i=0;i<n1;i++)
+				{for(j=0;j<m1;j++)
+				{matriz3[i][j]=matriz1[i][j];
+				}
+				}
+				n3=n1;
+				m3=m1;
+				}
+				else
+				{for(i=0;i<n2;i++)
+				{for(j=0;j<m2;j++)
+				{matriz3[i][j]=matriz2[i][j];
+				}
+				}
+				n3=n2;
+				m3=m2;
+				}
+	
+				for(i=0;i<m3;i++)
+				{for(j=0;j<n3;j++)
+				{for(k=0;k<m3;k++)
+				{for(l=0;l<n3;l++)
+				{if(matriz3[j][i]<matriz3[l][k])
+				{swap(matriz3[j][i],matriz3[l][k]);
+				}
+				}
+				}
+				}
+				}
+				cout<<"LA MATRIZ ORDENADA ES:"<<endl;
+				for(i=0;i<n3;i++)
+				{for(j=0;j<m3;j++)
+				{cout<<matriz3[i][j]<<" ";
+				}
+				cout<<endl;
+				}
+				getch();
+				break;
+case 7:         
+	k=n1;
+	for (i=0;i<k;i++)
+		{for(j=0;j<k;j++)
+			{matriz3[i][j]=matriz1[i][j];
+            }
+         }
+	cout<<endl;
+	
+	for (i=0;i<k;i++)
+		for(j=k;j<2*k;j++)
+		{
+			if(i==(j-k))
+				matriz1[i][j]=1;
+			else
+				matriz1[i][j]=0;
+		}
+		//Iteraciones
+		for (s=0;s<k;s++)
+		{
+			e=matriz1[s][s];
+			for (j=0;j<2*k;j++)
+				matriz1[s][j]=matriz1[s][j]/e;
+
+			for(i=0;i<k;i++)
+			{
+				if (i==s)
+					;
+				else
+				{
+					coef= matriz1[i][s];
+					for (j=0;j<2*k;j++)
+						a[j]=matriz1[s][j]*(coef*-1);
+					for (j=0;j<2*k;j++)
+						matriz1[i][j]=matriz1[i][j]+a[j];
+				}
+			}
+		}
+		for (i=0;i<k;i++)
+		{c=0;
+			for(j=k;j<2*k;j++)
+			{D[i][c]=matriz1[i][j];
+				c++;
+            }
+         }
+		
+ 
+for(i=0;i<k;i++)
+   {for(j=0;j<k;j++)
+       { matriz3[i][j]=0;
+for(p=0;p<k;p++)
+		    {matriz3[i][j]=(matriz3[i][j]+(D[i][p]*matriz2[p][j]));
+		}
+      }
+    }
+
+cout<<"Finalmente A^-1B=  \n"<< endl;
+for (i=0;i<k;i++)
+		{
+			for(j=0;j<1;j++)
+			{cout <<"\t"<<matriz3[i][j];
+			 }
+			cout<<endl;
+} 
+
+
+				getch();
+				break;      
+case 0: cout<<"SALIR";
+	break;
+
+}
+			
+              
+system("cls");
+}while(o!=0);
+getch();
+}
