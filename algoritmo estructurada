@@ -11,6 +11,8 @@ void boicot(int matriz1[N][N],int matriz2[N][N],int matriz3[N][N],int n,int m,in
 void multiplicar(int matriz1[N][N],int matriz2[N][N],int matriz3[N][N],int n1,int m1,int n2,int m2,int &n3,int &m3);
 void cambiarmatrices(int matriz1[N][N],int matriz2[N][N],int matriz3[N][N],int n1,int m1,int n2,int m2,int &n3,int &m3,int l);
 void transpuesta(int matriz3[N][N],int n3,int m3);
+void ordenarporfila(int matriz1[N][N],int matriz2[N][N],int matriz3[N][N],int n1,int m1,int n2,int m2,int &n3,int &m3,int l);
+void ordenarporcolumna(int matriz1[N][N],int matriz2[N][N],int matriz3[N][N],int n1,int m1,int n2,int m2,int &n3,int &m3,int l);
 //MAIN
 void main()
 {int matriz1[N][N],matriz2[N][N],matriz3[N][N],matriz4[N][N],a[N],D[N][N];
@@ -73,8 +75,26 @@ case 4:
 	   cambiarmatrices(matriz1,matriz2,matriz3,n1,m1,n2,m2,n3,m3,l);
 	   transpuesta(matriz3,n3,m3);
 	   mostrar(matriz3,n3,m3,'C');
+	   getch();
+	   break;
 
-
+case 5:do{cout<<"Que matriz quiere ordenar?";
+		cin>>l;
+		}while(l<1||l>2);
+	   ordenarporfila(matriz1,matriz2,matriz3,n1,m1,n2,m2,n3,m3,l);
+	    mostrar(matriz3,n3,m3,'C');
+	   getch();
+	   break;
+case 6:do{cout<<"Que matriz quiere ordenar?";
+		cin>>l;
+		}while(l<1||l>2);
+	   ordenarporcolumna(matriz1,matriz2,matriz3,n1,m1,n2,m2,n3,m3,l);
+	    mostrar(matriz3,n3,m3,'C');
+	   getch();
+	   break;
+case 0:cout<<"SALIR";
+	getch();
+	break;
 }
 system("cls");
 }while(o!=0);
@@ -228,5 +248,69 @@ void transpuesta(int matriz3[N][N],int n3,int m3)
 					m3=m3-k;
 					}
 					}
+}
+}
+
+void ordenarporfila(int matriz1[N][N],int matriz2[N][N],int matriz3[N][N],int n1,int m1,int n2,int m2,int &n3,int &m3,int l)
+{int i,j,k;
+if(l==1){
+for(i=0;i<n1;i++)
+{for(j=0;j<m1;j++)
+{matriz3[i][j]=matriz1[i][j];
+}
+}
+n3=n1;
+m3=m1;
+}
+else
+{for(i=0;i<n2;i++)
+{for(j=0;j<m2;j++)
+{matriz3[i][j]=matriz2[i][j];
+}
+}
+n3=n2;
+m3=m2;
+}
+for(i=0;i<n3;i++)
+{for(j=0;j<m3;j++)
+{for(k=0;k<n3;k++)
+{for(l=0;l<m3;l++)
+{if(matriz3[i][j]<matriz3[k][l])
+{swap(matriz3[i][j],matriz3[k][l]);
+}
+}
+}
+}
+}
+}
+void ordenarporcolumna(int matriz1[N][N],int matriz2[N][N],int matriz3[N][N],int n1,int m1,int n2,int m2,int &n3,int &m3,int l)
+{int i,j,k; if(l==1){
+for(i=0;i<n1;i++)
+{for(j=0;j<m1;j++)
+{matriz3[i][j]=matriz1[i][j];
+}
+}
+n3=n1;
+m3=m1;
+}
+else
+{for(i=0;i<n2;i++)
+{for(j=0;j<m2;j++)
+{matriz3[i][j]=matriz2[i][j];
+}
+}
+n3=n2;
+m3=m2;
+}
+for(i=0;i<m3;i++)
+{for(j=0;j<n3;j++)
+{for(k=0;k<m3;k++)
+{for(l=0;l<n3;l++)
+{if(matriz3[j][i]<matriz3[l][k])
+{swap(matriz3[j][i],matriz3[l][k]);
+}
+}
+}
+}
 }
 }
